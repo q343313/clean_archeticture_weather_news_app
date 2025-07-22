@@ -30,3 +30,15 @@ class NetworkimageWidget extends StatelessWidget {
     );
   }
 }
+
+class NetworkCirlceImage extends StatelessWidget {
+  const NetworkCirlceImage({super.key,required this.imageurl});
+  final String?imageurl;
+
+  final String image = "https://e7.pngegg.com/pngimages/392/163/png-clipart-cloud-cloud-image-file-formats-atmosphere.png";
+
+  @override
+  Widget build(BuildContext context) {
+    return Image(image: NetworkImage(imageurl??image),width: 100,height: 100,);
+  }
+}

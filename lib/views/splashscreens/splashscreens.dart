@@ -42,14 +42,22 @@ class _SplashScreen extends State<SplashScreen>with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image(image: AssetImage("assets/images/man.png"),width: _animation.value,height: _animation.value,),
-            SizedBox(height: 10,),
-            Text("Clean Archeticture",style: TextStyle(fontSize: 32,fontFamily: "bold"),)
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Colors.green.shade300,
+              Colors.green
+            ])
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image(image: AssetImage("assets/images/man.png"),width: _animation.value,height: _animation.value,),
+              SizedBox(height: 10,),
+              Text("Clean Archeticture",style: TextStyle(fontSize: 32,fontFamily: "bold"),)
+            ],
+          ),
         ),
       ),
     );

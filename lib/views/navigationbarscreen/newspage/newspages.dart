@@ -1,15 +1,10 @@
 
-
-import 'package:clean_architecture_weather_new_app/bloc/newsbloc/newsbloc.dart';
-import 'package:clean_architecture_weather_new_app/bloc/themebloc/themecubits.dart';
-import 'package:clean_architecture_weather_new_app/config/domain/constants/appcolors.dart';
-import 'package:clean_architecture_weather_new_app/config/route/routename.dart';
-import 'package:clean_architecture_weather_new_app/models/datasavemodel/datasavemodel.dart';
-import 'package:clean_architecture_weather_new_app/utility/enum.dart';
-import 'package:flutter/material.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:clean_architecture_weather_new_app/views/navigationbarscreen/newspage/drawerwidgetscreens.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../config/components/paths.dart';
+
+import '../../../allpaths.dart';
+
 
 class Newspages extends StatefulWidget {
   const Newspages({super.key});
@@ -31,13 +26,24 @@ class _NewspagesState extends State<Newspages> with TickerProviderStateMixin{
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawerwidgetscreens(),
       appBar: AppBar(
         title: Text("NewsPages"),
         centerTitle: true,
         actions: [
-          IconButton(onPressed: (){BlocProvider.of<ThemeCubit>(context).toggletheme();}, icon: Icon(Theme.of(context).brightness == Brightness.dark?Icons.light_mode:Icons.dark_mode))
+          IconButton(onPressed: (){BlocProvider.of<ThemeCubit>(context).toggletheme();}, icon: Icon(Theme.of(context).brightness == Brightness.dark?Icons.light_mode:Icons.dark_mode)),
+          IconButton(onPressed: ()async{
+            await showNotification(title: 'Talha Afridi', body: 'This notification is come from my app',notificationlayout: NotificationLayout.BigPicture,bigpicture: "https://canto-wp-media.s3.amazonaws.com/app/uploads/2019/08/19194138/image-url-3.jpg");
+          }, icon: Icon(Icons.notification_add))
         ],
       ),
       body: Padding(
@@ -63,7 +69,16 @@ class _NewspagesState extends State<Newspages> with TickerProviderStateMixin{
                 child: BlocBuilder<NewsBloc,NewsStates>(builder: (context,state){
                   switch(state.apiStatus){
                     case ApiStatus.failure:
-                      return Center(child: Text(state.message.toString(),));
+                      if(state.message.toString().contains("Internet")){
+                        return Internetexceptions(callback: (){
+                          context.read<NewsBloc>().add(GetNewsUpdates());
+                        });
+                      }else{
+                        return Center(
+                          child: Customtextwidget(text: state.message.toString(),
+                              fontsize: 20),
+                        );
+                      }
                     case ApiStatus.initial:
                     case ApiStatus.loading:
                       return ListView.builder(itemCount: 12,
@@ -78,6 +93,12 @@ class _NewspagesState extends State<Newspages> with TickerProviderStateMixin{
                      itemBuilder: (context,index){
                         String urls = state.newsApiResponse!.articles[index].urlToImage.toString();
                         final data = state.newsApiResponse!.articles[index];
+                        if(state.newsApiResponse == null ){
+                          return Center(
+                            child: Customtextwidget(text: "No Data Found",
+                                fontsize: 20),
+                          );
+                        }
                         return GestureDetector(
                           onTap: (){
                              DataSaveModel newsdata = DataSaveModel(

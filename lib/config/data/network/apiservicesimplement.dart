@@ -18,7 +18,7 @@ class ApiServicesImplement extends AppImplementTypes{
       jsonresponse = returnresponse(response);
 
     }catch(e){
-      throw DefaultException(e.toString());
+      throw NoInterNetException("");
     }
     return jsonresponse;
   }
@@ -32,7 +32,7 @@ class ApiServicesImplement extends AppImplementTypes{
       jsonresponse = returnresponse(response);
 
     }catch(e){
-      throw DefaultException(e.toString());
+      throw NoInterNetException("");
     }
     return jsonresponse;
   }
@@ -46,7 +46,7 @@ class ApiServicesImplement extends AppImplementTypes{
       jsonresponse = returnresponse(response);
 
     }catch(e){
-      throw DefaultException(e.toString());
+      throw NoInterNetException("");
     }
     return jsonresponse;
   }

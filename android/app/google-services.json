@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "627637393500",
+    "project_id": "cleancode-d19d6",
+    "storage_bucket": "cleancode-d19d6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627637393500:android:b53dc1039cebbea2e56e99",
+        "android_client_info": {
+          "package_name": "com.example.clean_architecture_weather_new_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGagAQBX3qlGYb-Swihw2GDr4UDWRMWIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

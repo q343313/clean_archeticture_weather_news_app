@@ -18,7 +18,7 @@ class AppColors {
   static const Color textfieldlightmode = Colors.white;
   static const Color textfielddarkmode = Colors.white12;
 
-  static const Color hintlightmode = Colors.black12;
+  static const Color hintlightmode = Colors.black54;
   static const Color hintdarkmode = Colors.white70;
 
   static const Color iconlightmode = Colors.white;

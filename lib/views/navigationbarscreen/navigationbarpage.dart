@@ -1,10 +1,12 @@
 
 
 import 'package:clean_architecture_weather_new_app/config/domain/constants/appcolors.dart';
+import 'package:clean_architecture_weather_new_app/views/navigationbarscreen/userdata/userprofilesscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../views.dart';
+import 'moviespage/moviespage.dart';
 
 class Homescreens extends StatefulWidget {
   const Homescreens({super.key});
@@ -20,8 +22,9 @@ class _HomescreensState extends State<Homescreens> {
   List<Widget>screen = [
     Newspages(),
     Weatherdata(),
-    Settingpage(),
-    Profilepage()
+    MoviesPage(),
+    Profilepage(),
+    Userprofilesscreen()
   ];
 
   @override
@@ -35,7 +38,8 @@ class _HomescreensState extends State<Homescreens> {
         destinations: [
           NavigationDestination(icon: Icon(Icons.newspaper), label: "newsapp",selectedIcon: Icon(Icons.navigation),),
           NavigationDestination(icon: Icon(Icons.cloud_circle_rounded), label: "weatherapp",selectedIcon: Icon(Icons.cloud),),
-          NavigationDestination(icon: Icon(Icons.settings), label: "setting",selectedIcon: Icon(CupertinoIcons.settings),),
+          NavigationDestination(icon: Icon(Icons.movie_creation_outlined), label: "Movies",selectedIcon: Icon(Icons.movie),),
+          NavigationDestination(icon: Icon(Icons.person), label: "Profile",selectedIcon: Icon(CupertinoIcons.person_alt),),
           NavigationDestination(icon: Icon(Icons.person), label: "Profile",selectedIcon: Icon(CupertinoIcons.person_alt),)
         ],
         height: 60,

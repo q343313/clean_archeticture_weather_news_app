@@ -2,6 +2,8 @@
 
 import 'package:clean_architecture_weather_new_app/config/domain/constants/appcolors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/platform.dart';
 
 class AppThemes{
   static final ThemeData lightthemedata  = ThemeData(

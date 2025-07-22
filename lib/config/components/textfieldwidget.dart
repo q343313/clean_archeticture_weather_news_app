@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 class Textfieldwidget extends StatelessWidget {
 
   final String hinttext;
-  final TextEditingController controller;
+  final TextEditingController?controller;
   final TextInputType?textInputType;
   final double?widht;
   final double?height;
@@ -15,19 +15,22 @@ class Textfieldwidget extends StatelessWidget {
   final Icon?preffixicon;
   final IconButton?suffixicon;
   final bool obstacttext;
-
+  final String? Function(String?)? validator;
+  final String?initialvalue;
 
   Textfieldwidget({
     super.key,
     required this.hinttext,
-    required this.controller,
+     this.controller,
     required this.textInputType,
     this.height = 50,
     this.widht = 320,
     this.suffixicon,
     this.preffixicon,
     this.func,
-    this.obstacttext  = false
+    this.obstacttext  = false,
+    this.validator,
+    this.initialvalue
   });
 
   @override
@@ -43,7 +46,9 @@ class Textfieldwidget extends StatelessWidget {
         child: TextFormField(
           controller: controller,
           keyboardType: textInputType,
+          initialValue:initialvalue ,
           onChanged: func,
+          validator:validator ,
           obscureText: obstacttext,
           decoration: InputDecoration(
             border: InputBorder.none,
